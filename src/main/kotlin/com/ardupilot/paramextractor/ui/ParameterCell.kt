@@ -9,23 +9,19 @@ class ParameterCell(
     private val selectedParameters: Set<Parameter>
 ) : ListCell<Parameter>() {
 
-    private var row: ParameterRow? = null
-
     override fun updateItem(item: Parameter?, empty: Boolean) {
         super.updateItem(item, empty)
 
         if (empty || item == null) {
             graphic = null
             text = null
-            row = null
         } else {
-            if (row == null) {
-                row = ParameterRow(item, onSelectionChanged, showCheckbox)
-            }
+            // Always create new ParameterRow for correct data
+            val row = ParameterRow(item, onSelectionChanged, showCheckbox)
 
             // Update checkbox state based on selectedParameters
             if (showCheckbox) {
-                row?.checkBox?.isSelected = item in selectedParameters
+                row.checkBox.isSelected = item in selectedParameters
             }
 
             graphic = row

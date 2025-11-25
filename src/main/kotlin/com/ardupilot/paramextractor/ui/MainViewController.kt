@@ -217,16 +217,18 @@ class MainViewController : Initializable {
     }
 
     private fun updateAllDisplays() {
+        // Filter all parameters by search text
         val filteredBySearch = if (searchText.isEmpty()) {
             allParameters
         } else {
             allParameters.filter {
-                it.name.lowercase().contains(searchText) ||
-                it.value.lowercase().contains(searchText)
+                it.name.lowercase().contains(searchText)
             }
         }
 
+        // Left pane shows filtered parameters
         displayParameters(leftListView, filteredBySearch)
+        // Right pane shows selected parameters filtered by search
         updateFilteredParameters()
         updateExportButtonState()
     }
@@ -361,8 +363,7 @@ class MainViewController : Initializable {
             selectedParameters.toList()
         } else {
             selectedParameters.filter {
-                it.name.lowercase().contains(searchText) ||
-                it.value.lowercase().contains(searchText)
+                it.name.lowercase().contains(searchText)
             }
         }
 
