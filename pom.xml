@@ -46,12 +46,6 @@
             <artifactId>javafx-graphics</artifactId>
             <version>26-ea+14</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-swing -->
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-swing</artifactId>
-            <version>26-ea+14</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.gillius/jfxutils -->
         <dependency>
             <groupId>org.gillius</groupId>

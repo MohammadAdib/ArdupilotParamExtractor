@@ -14,7 +14,6 @@ buildNumber.properties
 *.iml
 *.iws
 *.ipr
-out/
 
 # Eclipse
 .classpath
@@ -37,7 +36,6 @@ Desktop.ini
 *.class
 
 # Package files
-*.jar
 *.war
 *.nar
 *.ear

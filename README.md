@@ -70,3 +70,9 @@ A sample parameter file (`sample_parameters.param`) is included in the repositor
    - VM options: `--module-path <path-to-javafx-sdk>/lib --add-modules javafx.controls,javafx.fxml`
 
 Alternatively, use the Maven run configuration with goal: `javafx:run`
+
+## Build Installer
+Build JAR, and then run the below command from \out\artifacts\parameter_extractor_jar
+```
+ jpackage --type msi --app-version "1.0.0" --input . --dest . --main-jar parameter-extractor.jar --main-class com.titanuas.paramextractor.MainApp --module-path "C:\Program Files\Java\javafx-jmods-26" --add-modules javafx.controls,javafx.fxml,javafx.swing,javafx.base,javafx.graphics --win-shortcut --win-menu --icon "icon.ico" --name "Parameter Extractor"
+```
