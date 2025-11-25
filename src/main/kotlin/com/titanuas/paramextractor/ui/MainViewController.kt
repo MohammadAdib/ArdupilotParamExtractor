@@ -123,7 +123,8 @@ class MainViewController : Initializable {
         if (file != null) {
             prefs.put("lastDirectory", file.parent)
             lastOpenedFileName = file.name
-            openFileButton.text = file.name
+            openFileButton.isMnemonicParsing = false
+            openFileButton.text = file.nameWithoutExtension
             loadParameters(file)
         }
     }
