@@ -3,12 +3,19 @@ package com.ardupilot.paramextractor.ui
 import com.ardupilot.paramextractor.model.Parameter
 import javafx.geometry.Insets
 import javafx.geometry.Pos
+import javafx.geometry.Side
 import javafx.scene.control.CheckBox
+import javafx.scene.control.Button
+import javafx.scene.control.ContextMenu
+import javafx.scene.control.MenuItem
+import javafx.scene.control.Tooltip
 import javafx.scene.control.Label
 import javafx.scene.layout.HBox
 import javafx.scene.layout.Priority
 import javafx.scene.layout.Region
 import javafx.scene.paint.Color
+import java.awt.Desktop
+import java.net.URI
 
 class ParameterRow(
     val parameter: Parameter,
@@ -52,7 +59,32 @@ class ParameterRow(
             style = "-fx-text-fill: lightgray;"
         }
 
-        children.addAll(nameLabel, separator, valueLabel)
+        // Info icon/button to open documentation
+        val infoButton = Button("i").apply {
+            styleClass.add("info-button")
+            tooltip = Tooltip("Show docs for ${parameter.name}")
+
+            setOnAction {
+                val menu = ContextMenu().apply {
+                    val planeUrl = docsUrl("https://ardupilot.org/plane/docs/parameters.html", parameter.name)
+                    val copterUrl = docsUrl("https://ardupilot.org/copter/docs/parameters.html", parameter.name)
+                    val roverUrl = docsUrl("https://ardupilot.org/rover/docs/parameters.html", parameter.name)
+                    val subUrl = docsUrl("https://ardupilot.org/sub/docs/parameters.html", parameter.name)
+                    val trackerUrl = docsUrl("https://ardupilot.org/antennatracker/docs/parameters.html", parameter.name)
+
+                    items.addAll(
+                        MenuItem("Open Plane docs").apply { setOnAction { openInBrowser(planeUrl) } },
+                        MenuItem("Open Copter docs").apply { setOnAction { openInBrowser(copterUrl) } },
+                        MenuItem("Open Rover docs").apply { setOnAction { openInBrowser(roverUrl) } },
+                        MenuItem("Open Sub docs").apply { setOnAction { openInBrowser(subUrl) } },
+                        MenuItem("Open AntennaTracker docs").apply { setOnAction { openInBrowser(trackerUrl) } }
+                    )
+                }
+                menu.show(this, Side.BOTTOM, 0.0, 0.0)
+            }
+        }
+
+        children.addAll(nameLabel, separator, valueLabel, infoButton)
     }
 
     private fun toRgbString(color: Color): String {
@@ -60,5 +92,20 @@ class ParameterRow(
         val g = (color.green * 255).toInt()
         val b = (color.blue * 255).toInt()
         return "rgb($r, $g, $b)"
+    }
+
+    private fun docsUrl(base: String, paramName: String): String {
+        val anchor = paramName.lowercase().replace("_", "-")
+        return "$base#$anchor"
+    }
+
+    private fun openInBrowser(url: String) {
+        try {
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().browse(URI(url))
+            }
+        } catch (_: Exception) {
+            // Silently ignore if unable to open browser
+        }
     }
 }

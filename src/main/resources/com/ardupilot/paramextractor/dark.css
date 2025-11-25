@@ -97,3 +97,22 @@
 .list-cell:odd {
     -fx-background-color: transparent;
 }
+
+/* Info button styling in parameter rows */
+.info-button {
+    -fx-padding: 0 6 0 6;
+    -fx-background-color: transparent;
+    -fx-border-color: #666666;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-text-fill: #cccccc;
+    -fx-font-weight: bold;
+    -fx-min-width: 18px;
+    -fx-min-height: 18px;
+}
+
+.info-button:hover {
+    -fx-background-color: #333333;
+    -fx-text-fill: white;
+    -fx-border-color: #888888;
+}
