@@ -6,25 +6,25 @@
 
 <VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ardupilot.paramextractor.ui.MainViewController">
 
-    <HBox alignment="CENTER_LEFT" spacing="10">
+    <HBox alignment="CENTER_LEFT" spacing="8">
         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
         </padding>
         <Button fx:id="openFileButton" onAction="#onOpenFile" text="Open File" />
         <TextField fx:id="searchField" promptText="Filter parameters..." HBox.hgrow="ALWAYS" />
       <VBox.margin>
-         <Insets left="10.0" right="10.0" top="10.0" />
+         <Insets left="8.0" right="8.0" top="4.0" />
       </VBox.margin>
     </HBox>
-    <HBox spacing="10" VBox.vgrow="ALWAYS">
+    <HBox spacing="8" VBox.vgrow="ALWAYS">
         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" />
+            <Insets bottom="8.0" left="8.0" right="8.0" />
         </padding>
 
         <!-- Left Pane: Original Parameters -->
         <VBox spacing="5" HBox.hgrow="ALWAYS">
             <padding>
-                <Insets bottom="10.0" left="10.0" />
+                <Insets bottom="8.0" left="8.0" />
             </padding>
 
             <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Original Parameters" />
@@ -35,7 +35,7 @@
         <!-- Middle Pane: Category Filters -->
         <VBox maxWidth="280" minWidth="280" prefWidth="280" spacing="5" HBox.hgrow="NEVER">
             <padding>
-                <Insets bottom="10.0" left="10.0" right="10.0" />
+                <Insets bottom="8.0" left="8.0" right="8.0" />
             </padding>
 
             <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Parameter Categories" />
@@ -51,7 +51,7 @@
             <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
                 <VBox fx:id="categoryPane" spacing="8">
                     <padding>
-                        <Insets bottom="10" left="10" right="10" top="10" />
+                        <Insets bottom="8" left="8" right="8" top="8" />
                     </padding>
                 </VBox>
             </ScrollPane>
@@ -60,7 +60,7 @@
         <!-- Right Pane: Filtered Parameters -->
         <VBox spacing="5" HBox.hgrow="ALWAYS">
             <padding>
-                <Insets bottom="10.0" right="10.0" />
+                <Insets bottom="8.0" right="8.0" />
             </padding>
 
             <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Filtered Parameters" />
